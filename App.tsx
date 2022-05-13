@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {StyleSheet, View, Text, Button, FlatList} from 'react-native';
+import {StyleSheet, View, Text, Button, FlatList, SafeAreaView} from 'react-native';
 import {BleManager, Device, State} from 'react-native-ble-plx';
 import {PagerView} from 'react-native-pager-view';
 import {ActivityIndicator} from 'react-native-paper';
@@ -159,6 +159,7 @@ const App = () => {
   return isLoading ? (
     <ActivityIndicator />
   ) : (
+    <SafeAreaView style={styles.view}>
     <View style={styles.view}>
       <Button
         title="Scan Devices"
@@ -236,7 +237,7 @@ const App = () => {
           <Text>Saved devices</Text>
           <FlatList data={savedDevices} renderItem={renderItem} />
         </View>
-        {/* <View key="1">
+        <View key="1">
           <TextImage
             imageUrl="https://img.medicalexpo.com/images_me/photo-mg/100940-16890221.jpg"
             deviceName="B02T"
@@ -298,9 +299,10 @@ const App = () => {
             deviceName="PC-60FW"
           />
           <AD805Screen currentDevice={currentDevice.current} />
-        </View> */}
+        </View>
       </PagerView>
     </View>
+    </SafeAreaView>
   );
 };
 

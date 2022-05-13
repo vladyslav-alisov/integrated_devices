@@ -44,6 +44,14 @@ export class PC60FW {
           return;
         }
         const hexArray = Converters.base64ToHex(result?.value);
+        switch(hexArray[4]){
+          case '02':
+            console.log("waveform");
+            break;
+          case '01':
+            console.log('result');
+            break;
+        }
         console.log(hexArray);
       },
     );

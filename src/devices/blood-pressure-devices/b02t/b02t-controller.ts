@@ -163,7 +163,7 @@ export class B02T {
       header: parseInt(hexArray[0], 16),
       deviceName: parseInt(hexArray[1], 16),
       command: parseInt(hexArray[2], 16),
-      lenght: parseInt(hexArray[3], 16),
+      length: parseInt(hexArray[3], 16),
       pressure: parseInt(hexArray[5] + hexArray[4], 16),
     };
     return result;

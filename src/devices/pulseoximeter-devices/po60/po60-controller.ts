@@ -57,18 +57,21 @@ export class PO60 {
           case 'E0':
             totalBytesWillReceive = parseInt(hexArray[2], 16) * 24;
             break;
-          default:
+
+            
+          case 'E9':
             if (totalBytesWillReceive === 0) {
               console.log('No measurements');
-            } else {
+            } 
+            else {
               tempArray = tempArray.concat(hexArray);
-              if (totalBytesWillReceive === null) {
-                /**
-                 * This case appears when command getStorageInfo havent been sent, before receiving measurements
-                 * So we dont know how many measurement will be received
-                 */
-                return;
-              }
+              // if (totalBytesWillReceive === null) {
+              //   /**
+              //    * This case appears when command getStorageInfo havent been sent, before receiving measurements
+              //    * So we dont know how many measurement will be received
+              //    */
+              //   return;
+              // }
               if (totalBytesWillReceive !== null) {
                 if (
                   tempArray.length % 200 === 0 &&
@@ -125,7 +128,7 @@ export class PO60 {
       header: hexArray[0],
       dataType: hexArray[1].toString(),
       totalCapacity: hexArray[3] + hexArray[2],
-      unreadData: hexArray[4],
+      unreadData: hexArray[4], //doesnt work
       checksum: hexArray[5].toString(),
     };
     return result;
